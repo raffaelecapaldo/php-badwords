@@ -20,14 +20,14 @@
                     <h5 class="card-title text-center">Censura la parola</h5>
                     <p class="card-text text-center">Inserisci un paragrafo e la parola da censurare, poi premi invio
                     </p>
-                    <form action="" method="get">
+                    <form action="censure.php" method="get">
                         <div class="mb-3">
                             <label for="paragraph" class="form-label">Paragrafo</label>
-                            <textarea class="form-control" id="paragraph" rows="3"></textarea>
+                            <textarea name="paragraph" class="form-control" id="paragraph" rows="3"></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="badword" class="form-label">Parola da censurare</label>
-                            <input type="email" class="form-control" id="badword">
+                            <input name="badworld" type="text" class="form-control" id="badword">
                             <div class="send d-flex justify-content-center">
                                 <button type="submit" class="w-50 btn btn-primary mt-3">Censura</button>
                             </div>
