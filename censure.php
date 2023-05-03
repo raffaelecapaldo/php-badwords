@@ -3,20 +3,25 @@
 $badWord = trim($_GET["badworld"]);
 $paragraph = trim($_GET["paragraph"]);
 //Uso str_replace per rimpiazzare la badWorld nel paragrafo
-if (isset($paragraph) and empty($paragraph)) { //Se la variabile esiste ma è vuota
+if (isset($paragraph) && empty($paragraph)) { //Se la variabile esiste ma è vuota
     $censuredParagraph = "Non hai inserito nulla nel paragrafo"; //Dichiaralo
+    $title = "Errore";
 } elseif (isset($badWord) and empty($badWord)) {
     $censuredParagraph = "Non hai inserito una parola da censurare";
+    $title = "Errore";
+
 
 } else {
+    if (str_contains($paragraph, $badWord)) { //Gestisci il titolo della pagina
+        $title = "Parola censurata!";
+    } else {
+        $title = "Nessuna parola da censurare";
+    }
     $censuredParagraph = str_replace($badWord, '<span class="fw-bold">***</span>', $paragraph); //Sostituisci la parola nel paragrafo 
+
 }
 
-if (str_contains($paragraph, $badWord)) { //Gestisci il titolo della pagina
-    $title = "Parola censurata!";
-} else {
-    $title = "Nessuna parola da censurare";
-}
+
 
 ?>
 <!DOCTYPE html>
