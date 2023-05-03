@@ -2,6 +2,7 @@
 // Imposto le variabili dai valori della queryString
 $badWord = trim($_GET["badworld"]);
 $paragraph = trim($_GET["paragraph"]);
+$lenghtParagraph = strlen($paragraph);
 //Uso str_replace per rimpiazzare la badWorld nel paragrafo
 if (isset($paragraph) && empty($paragraph)) { //Se la variabile esiste ma è vuota
     $censuredParagraph = "Non hai inserito nulla nel paragrafo"; //Dichiaralo
@@ -17,9 +18,10 @@ if (isset($paragraph) && empty($paragraph)) { //Se la variabile esiste ma è vuo
     } else {
         $title = "Nessuna parola da censurare";
     }
-    $censuredParagraph = str_replace($badWord, '<span class="fw-bold">***</span>', $paragraph); //Sostituisci la parola nel paragrafo 
-
+    $censuredParagraph = str_replace($badWord, '***', $paragraph); //Sostituisci la parola nel paragrafo 
+    $lenghtCensuredP = strlen($censuredParagraph);
 }
+
 
 
 
@@ -40,7 +42,10 @@ if (isset($paragraph) && empty($paragraph)) { //Se la variabile esiste ma è vuo
           <img class="img-fluid" src="https://sp.rmbl.ws/s8/6/E/L/a/u/ELaua.qR4e.2.jpg" class="card-img-top" alt="censored">
           <div class="card-body">
             <h3 class="card-title m-0 text-center"> <?php echo $title ?> </h3>
-            <p class="fs-4 p-4 m-0 card-text text-center"> <?php echo $censuredParagraph ?> </p>
+            <p class="fs-4 p-4 m-0 card-text text-center"> <?php echo $paragraph ?> </p>
+            <p class="ms-2">Lunghezza paragrafo:  <?php echo $lenghtParagraph ?> </p>
+            <p class="fs-4 p-4 m-0 card-text text-center"> <span class="small">Paragrafo censurato:</span> <?php echo $censuredParagraph ?> </p>
+            <p class="ms-2">Lunghezza paragrafo:  <?php echo $lenghtCensuredP ?> </p>
             <div class="go-back text-center">
               <a href="index.php">
                 <button type="submit" class="w-50 btn btn-primary">Torna indietro</button>
